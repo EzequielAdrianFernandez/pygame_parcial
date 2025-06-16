@@ -19,6 +19,8 @@ biologia = {
 respuestas,verdadera = randomisar_listas_de_respuestas(biologia)
 
 contesto = False
+no_coincide = 0
+
 while contesto == False:
 
     print(f"{biologia["pregunta"]}:")
@@ -26,18 +28,26 @@ while contesto == False:
     for k in range(len(respuestas)):
         print(f"{respuestas[k]}")
 
-    ingreso = int(input("ingrese 1,2,3 o 4 para elegir su opcion elegida: "))
+    ingreso =(input("ingrese 1,2,3 o 4 para elegir su opcion elegida: "))
 
-    ingreeso = ingreso - 1
+    numeros_validos = ["1","2","3","4"]
 
-    if 4 >= ingreso >= 1:
-        if respuestas[ingreeso] == verdadera:
-            print("correcta!")
-            contesto = True
+    for m in range(len(numeros_validos)):
+        if ingreso == numeros_validos[m]:
+            ingreeso=int(ingreso)
+            ingreeso = ingreeso - 1
+
+
+            if respuestas[ingreeso] == verdadera:
+                print("correcta!")
+                contesto = True
+
+            else:
+                print("incorrecta :(")
+                contesto = True
 
         else:
-            print("incorrecta")
-            contesto = True
-    else:
-        print("ingreso incorrecto, intente de nuevo")
+            no_coincide += 1
 
+        if no_coincide == 4:
+            print("ingreso incorrecto, intente de nuevo")
