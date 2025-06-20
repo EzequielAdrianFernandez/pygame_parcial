@@ -1,5 +1,5 @@
-#
-
+import puntaje_tickets
+import usuarios
 import random
 from funciones_bis import *
 from base_de_datos_bis import *
@@ -15,7 +15,7 @@ categoria , pregunta = seleccionar_pregunta(biblioteca_preguntas,dificultad)
 respuestas , verdadera = randomisar_listas_de_respuestas(pregunta)
 
 while not contesto:
-    print(f"{pregunta}")
+    print(f"{pregunta["pregunta"]}")
 
     for k in range(len(respuestas)):
         print(f"{k+1}. {respuestas[k]}")

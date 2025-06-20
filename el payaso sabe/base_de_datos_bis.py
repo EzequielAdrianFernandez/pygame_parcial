@@ -1,13 +1,4 @@
 
-#categoria: dificultad: preguntas: respuestas: correcta/incorrecta:
-
-#categoria
-#facil , medio , dificil
-# respuestas: correcta/incorrecta
-
-
-
-
 biblioteca_preguntas = {
 
     "biologia": {
