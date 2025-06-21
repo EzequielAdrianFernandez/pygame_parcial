@@ -6,7 +6,7 @@ biblioteca_preguntas = {
             {"pregunta": "¿Qué animal puede regenerar sus extremidades si las pierde?",
                 "respuestas": {
                     "correcta": "la lagartija",
-                    "incorrecta": ["el elefante", "el pinguino", "la jirafa"]
+                    "incorrectas": ["el elefante", "el pinguino", "la jirafa"]
                 }},
 #
 
@@ -146,5 +146,22 @@ biblioteca_preguntas = {
     },
     # ... (otras categorías como historia, geografía, etc.) ...
 }
+
+
+biblioteca_usuarios = {
+    "usuario_1": {
+        "nombre": "pachacho",
+        "record_boletos": 15,       # Mayor cantidad de boletos en una partida
+        "total_boletos": 87,       # Acumulado histórico de boletos
+        "partidas_jugadas": 12     # Partidas completadas
+    },
+    "usuario_2": {
+        "nombre": "pachacha",
+        "record_boletos": 23,
+        "total_boletos": 156,
+        "partidas_jugadas": 20
+    }
+}
+
 
 

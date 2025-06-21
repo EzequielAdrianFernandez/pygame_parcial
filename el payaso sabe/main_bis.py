@@ -1,37 +1,51 @@
-import puntaje_tickets
-import usuarios
 import random
 from funciones_bis import *
 from base_de_datos_bis import *
 
-correctas = 0
-incorrectas = 0
+
 contesto = False
 
-dificultades=["facil","medio","dificil"]
-num_tem = random.randint(0,2)
-dificultad = dificultades[num_tem]
-categoria , pregunta = seleccionar_pregunta(biblioteca_preguntas,dificultad)
-respuestas , verdadera = randomisar_listas_de_respuestas(pregunta)
+dificultades=["facil","facil","facil","medio","medio","medio","dificil","dificil","dificil",]
 
-while not contesto:
-    print(f"{pregunta["pregunta"]}")
+seguir_jugando = True
+aciertos = 0
+fallas = 0
+ronda = 1
+tickets_conseguidos = 0
+while seguir_jugando:
+    limite = 8
+    if ronda == limite:
+        seguir_jugando = False
 
-    for k in range(len(respuestas)):
-        print(f"{k+1}. {respuestas[k]}")
+    dificultad = dificultades[ronda]
+    categoria , pregunta = seleccionar_pregunta(biblioteca_preguntas,dificultad)
 
-    ingreso = input("Ingrese 1, 2, 3 o 4 para elegir su opción: ")
-    mensaje, valido = verificar_respuesta_correcta(ingreso, respuestas, verdadera)
+    respuestas , verdadera = randomisar_listas_de_respuestas(pregunta)
 
-    if valido:
-        print(mensaje)
-        contesto = True
-        if "correcta" in mensaje.lower():
-            correctas += 1
+
+    while not contesto:
+        print(f"{pregunta["pregunta"]}")
+
+        for k in range(len(respuestas)):
+            print(f"{k+1}. {respuestas[k]}")
+
+        ingreso = input("Ingrese 1, 2, 3 o 4 para elegir su opción: ")
+        mensaje, valido, tickets_ronda = verificar_respuesta_correcta(ingreso, respuestas, verdadera ,dificultad )
+
+        if valido:
+            
+            contesto = True
+            if mensaje == "¡Correcta!":
+                aciertos += 1
+                tickets_conseguidos = tickets_conseguidos + tickets_ronda
+            else:
+                fallas += 1
+            print(mensaje)
+            mostrar_resultados_ronda(tickets_ronda)
+            
         else:
-            incorrectas += 1
-    else:
-        print(mensaje)
-
-mostrar_resultados(correctas, incorrectas)
-
+            print(mensaje)
+    
+    contesto = False
+    ronda += 1
+mostrar_resultados_partida(aciertos,fallas,tickets_conseguidos)
